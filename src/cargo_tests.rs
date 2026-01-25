@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use crate::cargo::{CargoManifest, DependencyType};
+    use crate::cargo::CargoManifest;
     use std::fs;
     use std::path::PathBuf;
     use tempfile::TempDir;
