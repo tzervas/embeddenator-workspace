@@ -1,0 +1,52 @@
+# Embeddenator Workspace - Development Context
+
+## Active Technologies
+- **Rust**: Stable toolchain (edition 2021)
+- **Workspace Management**: Helper utilities for multi-repo development workflows
+- **Internal Tooling**: CI scripts, local development helpers, workspace automation
+
+## Project Structure
+```
+embeddenator-workspace/
+├── src/
+│   └── lib.rs           # Workspace management utilities
+├── Cargo.toml           # Internal crate (not published to crates.io)
+└── README.md            # Alpha/internal status
+```
+
+## Commands
+- **Build**: `cargo build -p embeddenator-workspace`
+- **Run**: `cargo run -p embeddenator-workspace -- --help`
+- **Test**: `cargo test -p embeddenator-workspace`
+- **Check**: `cargo clippy -p embeddenator-workspace`
+- **Format**: `cargo fmt -p embeddenator-workspace`
+
+## Code Conventions
+- **Internal Only**: This crate is NOT published; exists for developer tooling
+- **Helper CLIs**: Provide small command-line utilities for CI and local workflows
+- **Workspace Operations**: Automate cross-repo tasks (version bumping, dependency updates, sync checks)
+- **No External Dependencies**: Keep lightweight to minimize CI overhead
+- **Documentation**: Use `--help` text to document CLI usage
+
+## Current Focus
+- **Multi-Repo Coordination**: Helper tools for managing 11-component workspace
+- **CI Integration**: Scripts for GitHub Actions workflows (lint, test, bench, release)
+- **Version Management**: Automate version bumping across Cargo.toml files
+- **Dependency Sync**: Validate component dependency versions align across repos
+- **Workspace Validation**: Check for common issues (orphaned branches, dirty working trees, etc.)
+
+## Recent Changes
+- Extracted as internal workspace management crate
+- Alpha status (not published to crates.io)
+- Used in CI pipelines for automated checks
+- Provides `--help` CLI for local development workflows
+
+## Agents
+- Embeddenator Agent (`embeddenator/.github/agents/embeddenator.agent.md`): VSA/engram/Rust integration expert
+- Workflow Orchestrator (`embeddenator/.github/agents/workflow-orchestrator.agent.md`): Multi-repo CI/CD coordination
+
+## Related Documentation
+- [WORKSPACE_TRACKER.md](/WORKSPACE_TRACKER.md): Multi-repo state tracker (primary use case)
+- [SPEC_KIT_INTEGRATION.md](/SPEC_KIT_INTEGRATION.md): Specification-Driven Development (SDD) workflow
+- [update_all.sh](/update_all.sh): Git sync script for all repos
+- [ADR-016](https://github.com/tzervas/embeddenator/blob/main/docs/adr/ADR-016-component-decomposition.md): Component decomposition rationale
